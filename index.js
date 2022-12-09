@@ -1,0 +1,16 @@
+let express =require('express')
+let app =express()
+let cors =require('cors')
+let userRoutes =require('./routes/user')
+let categoryRoutes=require('./routes/category')
+let productRoute=require('./routes/product')
+require('dotenv').config()
+
+app.use(cors())
+app.use(express.urlencoded({extended:true}))
+app.use(express.json())
+
+app.use('/user',userRoutes)
+app.use('/category',categoryRoutes)
+app.use('/product',productRoute)
+app.listen(3300,()=>{console.log('server is listening at 3300')})
